@@ -6,6 +6,7 @@
 #include <cassert>
 #include <limits>
 #include <vector>
+#include <iomanip>
 
 
 #include "TemplateTests.h"
@@ -178,7 +179,13 @@ void test_iterator_usage(ErrorContext &ec, unsigned int numRuns) {
             fixed_array<double> centenarray(SIZE);
             for (unsigned u = 0; u < SIZE; u++) centenarray[u] = 10.0 * u + 3.14;
 
+//            std::cout << std::endl << std::fixed;
+            int w = 0;
+
             for (fixed_array<double>::iterator it = centenarray.begin(); it != centenarray.end(); ++it) {
+//                std::cout << "Iteration: " << w++ << std::endl;
+//                std::cout << "Normal Output: " << std::setprecision(5) << *it << " + 10 = " << *it + 10 << std::endl;
+//                std::cout << "Internal Output: " << std::setprecision(15) << *it << " + 10 = " << *it + 10 << std::endl;
                 *it = *it + 10;
             }
 
@@ -291,6 +298,7 @@ void test_iterator_usage(ErrorContext &ec, unsigned int numRuns) {
             it = mockarray.begin();
             last = mockarray.begin();
             for (unsigned u = 0; u < SIZE - 1; u++) last++;
+            int x = 0;
             while (it != last) {
                 pass = pass && *(it++) == 3;
             }
