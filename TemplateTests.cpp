@@ -227,7 +227,6 @@ void test_iterator_usage(ErrorContext &ec, unsigned int numRuns) {
             unsigned u = 0;
             for (fixed_array<double>::const_iterator it = elevensies.begin(); it != elevensies.end(); ++it) {
                 pass = pass && *it == 10.0 * (u++) + 3.14;
-                std::cout << *it << " " << 10.0 * (u++) + 3.14 << std::endl;
             }
 
             ec.result(pass);
